@@ -1,0 +1,47 @@
+{
+	"engines": {
+		"node": ">=8.3.0"
+	},
+	"name": "with-iterator",
+	"version": "1.0.2",
+	"description": "wrap arbitrary input with ECMA2015 iterators",
+	"keywords": [
+		"withIterator",
+		"iterator",
+		"generator",
+		"functional",
+		"agnostic",
+		"wrapper",
+		"helper",
+		"ecma2015",
+		"es6",
+		"esm"
+	],
+	"repository": "github:mylesj/with-iterator",
+	"bugs": "https://github.com/mylesj/with-iterator/issues",
+	"main": "dist/index.cjs.js",
+	"module": "dist/index.esm.js",
+	"files": ["dist/"],
+	"license": "MIT",
+	"scripts": {
+		"prebuild": "rimraf dist",
+		"build": "rollup -c",
+		"test": "jest"
+	},
+	"git": {
+		"scripts": {
+			"pre-commit": "node_modules/.bin/lint-staged"
+		}
+	},
+	"lint-staged": {
+		"**/*.{js,json,md}": ["prettier --write", "git add"]
+	},
+	"devDependencies": {
+		"git-scripts": "~0.2.1",
+		"jest": "~22.4.3",
+		"lint-staged": "~7.0.4",
+		"prettier": "~1.12.0",
+		"rimraf": "^2.6.2",
+		"rollup": "~0.57.1"
+	}
+}
