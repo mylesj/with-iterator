@@ -12,6 +12,25 @@ describe('withIterator', () => {
 		expect({ ...iter }).toEqual({ value: true })
 	})
 
+	describe('when empty types are boxed', () => {
+		test('should be able to resolve the value of null', () => {
+			const iter = withIterator(null)
+			expect(Array.from(iter)[0]).toBe(null)
+		})
+		test('should be able to resolve the value of undefined', () => {
+			const iter = withIterator(undefined)
+			expect(Array.from(iter)[0]).toBe(undefined)
+		})
+		test('should resolve the value of null as a second argument', () => {
+			const iter = withIterator(undefined, null)
+			expect(Array.from(iter)[0]).toBe(null)
+		})
+		test('should resolve the value of undefined as a second argument', () => {
+			const iter = withIterator(undefined, undefined)
+			expect(Array.from(iter)[0]).toBe(undefined)
+		})
+	})
+
 	describe('when iterator unspecified', () => {
 		describe('applied to composite types', () => {
 			test('should yield the same object', () => {

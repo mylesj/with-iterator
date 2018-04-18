@@ -39,7 +39,11 @@ set with sensible defaults:
 
 » [RunKit][repo:examples]
 
-> Usage: `const { withIterator } = require('with-iterator')`
+### usage
+
+```js
+const { withIterator } = require('with-iterator')
+```
 
 By default if not passed a factory (function), any input is assigned
 an iterator that yields itself, if it isn't already iterable - else
