@@ -1,9 +1,9 @@
-import { isUndefined, isFunction, isIterable } from './util'
+import { isUndefined, isFunction, isIterable, boxed } from './util'
 
 const assignIterator = (iterator, thing, descriptor) => {
 	const isIterator = isFunction(iterator)
 	if (isIterable(thing) && !isIterator) return thing
-	return Object.defineProperty(Object(thing), Symbol.iterator, {
+	return Object.defineProperty(boxed(thing), Symbol.iterator, {
 		writable: true,
 		configurable: true,
 		enumerable: false,
@@ -16,10 +16,11 @@ const assignIterator = (iterator, thing, descriptor) => {
 	})
 }
 
-export const withIterator = (maybeIterator, ...args) =>
-	isFunction(maybeIterator)
-		? (args.length && assignIterator(maybeIterator, ...args)) ||
-		  ((...args) => assignIterator(maybeIterator, ...args))
-		: !isUndefined(maybeIterator)
-			? assignIterator(undefined, maybeIterator, ...args)
-			: withIterator
+export const withIterator = (...args) => {
+	const [maybeIterator] = args
+	if (args.length === 1)
+		return isFunction(maybeIterator)
+			? (...a) => assignIterator(maybeIterator, ...a)
+			: assignIterator(undefined, ...args)
+	return assignIterator(...args)
+}
