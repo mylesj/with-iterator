@@ -18,10 +18,10 @@ Key points:
 *   **isIterable**
     => ( input: _any_ ): _boolean_
 *   **withIterator**
-    => ( factory: _function_, input: _any_ [, descriptor: _Object_ ] ): _Object_
+    => ( factory: _function_, input: _any_ [, descriptor: _object_ ] ): _object_
 *   **withIterator**
     => ( factory: _function_ ): _function_
-    => ( input: _any_ [, descriptor: _Object_ ] ): _Object_
+    => ( input: _any_ [, descriptor: _object_ ] ): _object_
 
 The `descriptor` parameter is optional and corresponds to that of
 [`Object.defineProperty`][ext:defineproperty] - unless overridden, is
@@ -88,7 +88,7 @@ hex.map(rgb).forEach(code => {
 
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
 [repo:package]: https://www.npmjs.com/package/with-iterator
-[repo:examples]: https://runkit.com/mylesj/with-iterator/1.0.2
+[repo:examples]: https://runkit.com/mylesj/with-iterator/1.1.0
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 [ext:prettier]: https://github.com/prettier/prettier
 [ext:node]: https://nodejs.org/en/
