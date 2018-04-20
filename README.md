@@ -16,13 +16,17 @@ Key points:
 
 ## exposes
 
-*   **isIterable**
-    => ( input: _any_ ): _boolean_
 *   **withIterator**
     => ( factory: _function_, input: _any_ [, descriptor: _object_ ] ): _object_
 *   **withIterator**
     => ( factory: _function_ ): _function_
     => ( input: _any_ [, descriptor: _object_ ] ): _object_
+*   **isIterable**
+    => ( input: _any_ ): _boolean_
+*   **getIterator**
+    => ( input: _any_ ): _function_
+*   **valueOf**
+    => ( input: _any_ ): input
 
 The `descriptor` parameter is optional and corresponds to that of
 [`Object.defineProperty`][ext:defineproperty] - unless overridden, is
@@ -43,7 +47,12 @@ set with sensible defaults:
 ### usage
 
 ```js
-const { withIterator } = require('with-iterator')
+const {
+	withIterator,
+	isIterable,
+	getIterator,
+	valueOf
+} = require('with-iterator')
 ```
 
 By default if not passed a factory (function), any input is assigned
@@ -87,9 +96,21 @@ hex.map(rgb).forEach(code => {
 // hex: fedcba - rgb: (254,220,186)
 ```
 
+Can work with prototypes.
+
+```js
+class Digits extends Number {}
+withIterator(function*() {
+	for (let d of getIterator(String).call(this)) yield Number(d)
+}, Digits.prototype)
+
+const digits = new Digits(54321)
+Array.from(digits) // [5, 4, 3, 2, 1]
+```
+
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
 [repo:package]: https://www.npmjs.com/package/with-iterator
-[repo:examples]: https://runkit.com/mylesj/with-iterator/1.1.0
+[repo:examples]: https://runkit.com/mylesj/with-iterator/1.2.0
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 [ext:commits]: https://conventionalcommits.org
 [ext:prettier]: https://github.com/prettier/prettier

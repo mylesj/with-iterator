@@ -4,7 +4,21 @@ export const isUndefined = thing => thing === undefined
 
 export const isNull = thing => thing === null
 
+export const isEmpty = thing => isUndefined(thing) || isNull(thing)
+
 export const isIterable = thing => isFunction(Object(thing)[Symbol.iterator])
+
+export const getIterator = thing => {
+	let iterator = Object(thing)[Symbol.iterator]
+	if (
+		isUndefined(iterator) &&
+		isFunction(thing) &&
+		!isEmpty(thing.prototype)
+	) {
+		iterator = thing.prototype[Symbol.iterator]
+	}
+	return isFunction(iterator) ? iterator : undefined
+}
 
 export class Undefined {
 	valueOf() {
@@ -24,3 +38,5 @@ export const boxed = thing =>
 		: isNull(thing)
 			? new Null()
 			: Object(thing)
+
+export const valueOf = thing => boxed(thing).valueOf()
