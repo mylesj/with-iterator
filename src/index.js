@@ -1,2 +1,2 @@
 export { withIterator } from './withIterator'
-export { isIterable } from './util'
+export { isIterable, valueOf } from './util'
