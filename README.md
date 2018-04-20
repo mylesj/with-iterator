@@ -24,7 +24,7 @@ Key points:
 *   **isIterable**
     => ( input: _any_ ): _boolean_
 *   **getIterator**
-    => ( input: _any_ ): function
+    => ( input: _any_ ): _function_
 *   **valueOf**
     => ( input: _any_ ): input
 
@@ -47,7 +47,12 @@ set with sensible defaults:
 ### usage
 
 ```js
-const { withIterator } = require('with-iterator')
+const {
+	withIterator,
+	isIterable,
+	getIterator,
+	valueOf
+} = require('with-iterator')
 ```
 
 By default if not passed a factory (function), any input is assigned
@@ -99,7 +104,8 @@ withIterator(function*() {
 	for (let d of getIterator(String).call(this)) yield Number(d)
 }, Digits.prototype)
 
-console.log(Array.from(new Digits(54321)))
+const digits = new Digits(54321)
+Array.from(digits) // [5, 4, 3, 2, 1]
 ```
 
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
