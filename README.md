@@ -23,6 +23,8 @@ Key points:
     => ( input: _any_ [, descriptor: _object_ ] ): _object_
 *   **isIterable**
     => ( input: _any_ ): _boolean_
+*   **getIterator**
+    => ( input: _any_ ): function
 *   **valueOf**
     => ( input: _any_ ): input
 
@@ -89,9 +91,20 @@ hex.map(rgb).forEach(code => {
 // hex: fedcba - rgb: (254,220,186)
 ```
 
+Can work with prototypes.
+
+```js
+class Digits extends Number {}
+withIterator(function*() {
+	for (let d of getIterator(String).call(this)) yield Number(d)
+}, Digits.prototype)
+
+console.log(Array.from(new Digits(54321)))
+```
+
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
 [repo:package]: https://www.npmjs.com/package/with-iterator
-[repo:examples]: https://runkit.com/mylesj/with-iterator/1.1.0
+[repo:examples]: https://runkit.com/mylesj/with-iterator/1.2.0
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 [ext:commits]: https://conventionalcommits.org
 [ext:prettier]: https://github.com/prettier/prettier
