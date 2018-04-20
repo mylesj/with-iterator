@@ -16,13 +16,15 @@ Key points:
 
 ## exposes
 
-*   **isIterable**
-    => ( input: _any_ ): _boolean_
 *   **withIterator**
     => ( factory: _function_, input: _any_ [, descriptor: _object_ ] ): _object_
 *   **withIterator**
     => ( factory: _function_ ): _function_
     => ( input: _any_ [, descriptor: _object_ ] ): _object_
+*   **isIterable**
+    => ( input: _any_ ): _boolean_
+*   **valueOf**
+    => ( input: _any_ ): input
 
 The `descriptor` parameter is optional and corresponds to that of
 [`Object.defineProperty`][ext:defineproperty] - unless overridden, is

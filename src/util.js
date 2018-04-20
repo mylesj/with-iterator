@@ -24,3 +24,5 @@ export const boxed = thing =>
 		: isNull(thing)
 			? new Null()
 			: Object(thing)
+
+export const valueOf = thing => boxed(thing).valueOf()

@@ -1,4 +1,4 @@
-import { isUndefined, isFunction, isIterable, boxed } from './util'
+import { isUndefined, isFunction, isIterable, boxed, valueOf } from './util'
 
 const assignIterator = (iterator, thing, descriptor) => {
 	const isIterator = isFunction(iterator)
@@ -11,7 +11,7 @@ const assignIterator = (iterator, thing, descriptor) => {
 		value: isIterator
 			? iterator
 			: function* singleton() {
-					yield this.valueOf()
+					yield valueOf(this)
 			  }
 	})
 }
