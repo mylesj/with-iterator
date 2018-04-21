@@ -1,18 +1,25 @@
-import { isUndefined, isFunction, isIterable, boxed, valueOf } from './util'
+import { isIterable, boxed, valueOf } from './util'
+import { isUndefined, isFunction, Empty } from './types'
 
 const assignIterator = (iterator, thing, descriptor) => {
 	const isIterator = isFunction(iterator)
 	if (isIterable(thing) && !isIterator) return thing
-	return Object.defineProperty(boxed(thing), Symbol.iterator, {
+	const iterator_ = isIterator
+		? iterator
+		: function* singleton() {
+				yield valueOf(this)
+		  }
+	const boxed_ = boxed(thing)
+	if (boxed_ instanceof Empty) {
+		boxed_[Symbol.iterator] = iterator_
+		return boxed_
+	}
+	return Object.defineProperty(boxed_, Symbol.iterator, {
 		writable: true,
 		configurable: true,
 		enumerable: false,
 		...descriptor,
-		value: isIterator
-			? iterator
-			: function* singleton() {
-					yield valueOf(this)
-			  }
+		value: iterator_
 	})
 }
 
