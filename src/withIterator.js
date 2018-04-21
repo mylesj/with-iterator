@@ -1,4 +1,4 @@
-import { isIterable, boxed, valueOf } from './util'
+import { isIterable, boxed } from './util'
 import { isUndefined, isFunction, Empty } from './types'
 
 const assignIterator = (iterator, thing, descriptor) => {
@@ -7,7 +7,7 @@ const assignIterator = (iterator, thing, descriptor) => {
 	const iterator_ = isIterator
 		? iterator
 		: function* singleton() {
-				yield valueOf(this)
+				yield this.valueOf()
 		  }
 	const boxed_ = boxed(thing)
 	if (boxed_ instanceof Empty) {
