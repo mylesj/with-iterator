@@ -6,7 +6,7 @@ describe('getIterator', () => {
 			const obj = { [Symbol.iterator]: true }
 			expect(getIterator(obj)).toBe(undefined)
 		})
-		test('it should return a function if it exists', () => {
+		test('should return a function if it exists', () => {
 			const obj = withIterator({})
 			expect(typeof getIterator(obj)).toBe('function')
 		})
@@ -18,7 +18,7 @@ describe('getIterator', () => {
 			withIterator(iterator, Test.prototype)
 			expect(getIterator(Test)).toBe(iterator)
 		})
-		test('should prioritise own properties even though strange', () => {
+		test('should prioritise own properties even if erroneous', () => {
 			class Test {}
 			withIterator(Test.prototype)
 			Test[Symbol.iterator] = true

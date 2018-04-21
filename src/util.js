@@ -1,10 +1,11 @@
-export const isFunction = thing => typeof thing === 'function'
-
-export const isUndefined = thing => thing === undefined
-
-export const isNull = thing => thing === null
-
-export const isEmpty = thing => isUndefined(thing) || isNull(thing)
+import {
+	isUndefined,
+	isNull,
+	isEmpty,
+	isFunction,
+	Undefined,
+	Null
+} from './types'
 
 export const isIterable = thing => isFunction(Object(thing)[Symbol.iterator])
 
@@ -18,18 +19,6 @@ export const getIterator = thing => {
 		iterator = thing.prototype[Symbol.iterator]
 	}
 	return isFunction(iterator) ? iterator : undefined
-}
-
-export class Undefined {
-	valueOf() {
-		return undefined
-	}
-}
-
-export class Null {
-	valueOf() {
-		return null
-	}
 }
 
 export const boxed = thing =>

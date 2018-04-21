@@ -29,6 +29,16 @@ describe('withIterator', () => {
 			const iter = withIterator(undefined, undefined)
 			expect(Array.from(iter)[0]).toBe(undefined)
 		})
+		test('undefined should be immutable', () => {
+			const und = withIterator(undefined)
+			und.test = 'value'
+			expect(und.test).toBe(undefined)
+		})
+		test('null should be immutable', () => {
+			const nul = withIterator(null)
+			nul.test = 'value'
+			expect(nul.test).toBe(undefined)
+		})
 	})
 
 	describe('when iterator unspecified', () => {
