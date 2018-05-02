@@ -107,6 +107,15 @@ const digits = new Digits(54321)
 Array.from(digits) // [5, 4, 3, 2, 1]
 ```
 
+Resolve boxed primitives.
+
+```js
+const nul = withIterator(null)
+const und = withIterator(undefined)
+const num = withIterator(42)
+new Map([[nul, valueOf(nul)], [und, valueOf(und)], [num, valueOf(num)]])
+```
+
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
 [repo:package]: https://www.npmjs.com/package/with-iterator
 [repo:examples]: https://runkit.com/mylesj/with-iterator/1.2.0
