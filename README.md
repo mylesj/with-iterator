@@ -113,7 +113,11 @@ Resolve boxed primitives.
 const nul = withIterator(null)
 const und = withIterator(undefined)
 const num = withIterator(42)
-new Map([[nul, valueOf(nul)], [und, valueOf(und)], [num, valueOf(num)]])
+console.log(
+	valueOf(nul), // null
+	valueOf(und), // undefined
+	valueOf(num) // 42
+)
 ```
 
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
