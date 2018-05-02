@@ -1,5 +1,4 @@
 [![npm version][img:npm-version]][repo:package]
-[![node engine][img:node-version]][ext:node]
 [![build status][img:repo-status]][repo:status]
 [![conventional commits][img:commits]][ext:commits]
 [![styled with prettier][img:prettier]][ext:prettier]
@@ -114,9 +113,7 @@ Array.from(digits) // [5, 4, 3, 2, 1]
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 [ext:commits]: https://conventionalcommits.org
 [ext:prettier]: https://github.com/prettier/prettier
-[ext:node]: https://nodejs.org/en/
 [img:repo-status]: https://travis-ci.org/mylesj/with-iterator.svg?branch=master
 [img:npm-version]: https://badge.fury.io/js/with-iterator.svg
-[img:node-version]: https://img.shields.io/node/v/with-iterator.svg
 [img:commits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
 [img:prettier]: https://img.shields.io/badge/styled_with-prettier-ff69b4.svg
