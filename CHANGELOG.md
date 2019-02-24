@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.4"></a>
+
+## [1.2.4](https://github.com/mylesj/with-iterator/compare/v1.2.3...v1.2.4) (2019-02-24)
+
 <a name="1.2.3"></a>
 
 ## [1.2.3](https://github.com/mylesj/with-iterator/compare/v1.2.2...v1.2.3) (2018-05-02)
 
 ### Bug Fixes
 
-*   line-endings ([cfd65f9](https://github.com/mylesj/with-iterator/commit/cfd65f9))
+-   line-endings ([cfd65f9](https://github.com/mylesj/with-iterator/commit/cfd65f9))
 
 <a name="1.2.2"></a>
 
@@ -20,7 +24,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-*   [#9](https://github.com/mylesj/with-iterator/issues/9) freeze boxed empty objects ([#10](https://github.com/mylesj/with-iterator/issues/10)) ([f2dd96c](https://github.com/mylesj/with-iterator/commit/f2dd96c))
+-   [#9](https://github.com/mylesj/with-iterator/issues/9) freeze boxed empty objects ([#10](https://github.com/mylesj/with-iterator/issues/10)) ([f2dd96c](https://github.com/mylesj/with-iterator/commit/f2dd96c))
 
 <a name="1.2.0"></a>
 
@@ -28,8 +32,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-*   [#6](https://github.com/mylesj/with-iterator/issues/6) value-of helper ([84f1f1c](https://github.com/mylesj/with-iterator/commit/84f1f1c))
-*   [#7](https://github.com/mylesj/with-iterator/issues/7) get-iterator helper ([f17fc53](https://github.com/mylesj/with-iterator/commit/f17fc53))
+-   [#6](https://github.com/mylesj/with-iterator/issues/6) value-of helper ([84f1f1c](https://github.com/mylesj/with-iterator/commit/84f1f1c))
+-   [#7](https://github.com/mylesj/with-iterator/issues/7) get-iterator helper ([f17fc53](https://github.com/mylesj/with-iterator/commit/f17fc53))
 
 <a name="1.1.0"></a>
 
@@ -37,4 +41,4 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-*   [#4](https://github.com/mylesj/with-iterator/issues/4) resolve "empty" boxed values ([9ab29d9](https://github.com/mylesj/with-iterator/commit/9ab29d9))
+-   [#4](https://github.com/mylesj/with-iterator/issues/4) resolve "empty" boxed values ([9ab29d9](https://github.com/mylesj/with-iterator/commit/9ab29d9))

@@ -1,7 +1,7 @@
 [![npm version][img:npm-version]][repo:package]
 [![build status][img:repo-status]][repo:status]
+[![coverage status][img:coveralls]][ext:coveralls]
 [![conventional commits][img:commits]][ext:commits]
-[![styled with prettier][img:prettier]][ext:prettier]
 
 # with-iterator
 
@@ -9,22 +9,22 @@ A simple ECMA2015 helper function for attaching iterator factories or
 generators to arbitrary input, be it an object or primitive type.
 Key points:
 
-*   Is mutative - if passed a composite type, returns the same reference.
-*   Is type aware - if passed a primitive, returns the same object type.
-*   Is curried - if passed only a function, composes a new wrapper.
+-   Is mutative - if passed a composite type, returns the same reference.
+-   Is type aware - if passed a primitive, returns the same object type.
+-   Is curried - if passed only a function, composes a new wrapper.
 
 ## exposes
 
-*   **withIterator**
+-   **withIterator**
     => ( factory: _function_, input: _any_ [, descriptor: _object_ ] ): _object_
-*   **withIterator**
+-   **withIterator**
     => ( factory: _function_ ): _function_
     => ( input: _any_ [, descriptor: _object_ ] ): _object_
-*   **isIterable**
+-   **isIterable**
     => ( input: _any_ ): _boolean_
-*   **getIterator**
+-   **getIterator**
     => ( input: _any_ ): _function_
-*   **valueOf**
+-   **valueOf**
     => ( input: _any_ ): input
 
 The `descriptor` parameter is optional and corresponds to that of
@@ -125,8 +125,8 @@ console.log(
 [repo:examples]: https://runkit.com/mylesj/with-iterator/1.2.0
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 [ext:commits]: https://conventionalcommits.org
-[ext:prettier]: https://github.com/prettier/prettier
+[ext:coveralls]: https://coveralls.io/github/mylesj/with-iterator?branch=master
 [img:repo-status]: https://travis-ci.org/mylesj/with-iterator.svg?branch=master
 [img:npm-version]: https://badge.fury.io/js/with-iterator.svg
 [img:commits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
-[img:prettier]: https://img.shields.io/badge/styled_with-prettier-ff69b4.svg
+[img:coveralls]: https://coveralls.io/repos/github/mylesj/with-iterator/badge.svg?branch=master
