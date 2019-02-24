@@ -11,11 +11,7 @@
 		"generator",
 		"functional",
 		"agnostic",
-		"wrapper",
-		"helper",
-		"ecma2015",
-		"es6",
-		"esm"
+		"wrapper"
 	],
 	"repository": "github:mylesj/with-iterator",
 	"bugs": "https://github.com/mylesj/with-iterator/issues",
