@@ -3,7 +3,7 @@
 		"node": ">=8.3.0"
 	},
 	"name": "with-iterator",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"description": "wrap arbitrary input with ECMA2015 iterators",
 	"keywords": [
 		"withIterator",
