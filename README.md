@@ -127,6 +127,6 @@ console.log(
 [ext:commits]: https://conventionalcommits.org
 [ext:coveralls]: https://coveralls.io/github/mylesj/with-iterator?branch=master
 [img:repo-status]: https://travis-ci.org/mylesj/with-iterator.svg?branch=master
-[img:npm-version]: https://badge.fury.io/js/with-iterator.svg
-[img:commits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
+[img:npm-version]: https://badgen.net/npm/v/with-iterator
+[img:commits]: https://badgen.net/badge/conventional%20commits/1.0.0/yellow
 [img:coveralls]: https://coveralls.io/repos/github/mylesj/with-iterator/badge.svg?branch=master
