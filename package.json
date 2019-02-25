@@ -24,7 +24,8 @@
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "rollup -c",
-		"test": "jest",
+		"test": "jest -c jest.config.json",
+		"prerelease": "npm run build && npm run test",
 		"release": "standard-version --commit-all"
 	},
 	"git": {
@@ -45,6 +46,7 @@
 		"prettier": "^1.16.4",
 		"rimraf": "^2.6.3",
 		"rollup": "^1.2.3",
+		"rollup-jest": "0.0.2",
 		"standard-version": "^4.4.0"
 	}
 }
