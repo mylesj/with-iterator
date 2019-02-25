@@ -1,4 +1,4 @@
-const { withIterator } = require('..')
+import { withIterator } from '../src/withIterator'
 
 describe('withIterator', () => {
 	test('should maintain object references', () => {
@@ -17,27 +17,40 @@ describe('withIterator', () => {
 			const iter = withIterator(null)
 			expect(Array.from(iter)[0]).toBe(null)
 		})
+
 		test('should be able to resolve the value of undefined', () => {
 			const iter = withIterator(undefined)
 			expect(Array.from(iter)[0]).toBe(undefined)
 		})
+
 		test('should resolve the value of null as a second argument', () => {
 			const iter = withIterator(undefined, null)
 			expect(Array.from(iter)[0]).toBe(null)
 		})
+
 		test('should resolve the value of undefined as a second argument', () => {
 			const iter = withIterator(undefined, undefined)
 			expect(Array.from(iter)[0]).toBe(undefined)
 		})
+
 		test('undefined should be immutable', () => {
 			const und = withIterator(undefined)
-			und.test = 'value'
-			expect(und.test).toBe(undefined)
+			try {
+				und.test = 'value'
+				expect(und.test).toBe(undefined)
+			} catch (e) {
+				expect(e.message).toContain('not extensible')
+			}
 		})
+
 		test('null should be immutable', () => {
 			const nul = withIterator(null)
-			nul.test = 'value'
-			expect(nul.test).toBe(undefined)
+			try {
+				nul.test = 'value'
+				expect(nul.test).toBe(undefined)
+			} catch (e) {
+				expect(e.message).toContain('not extensible')
+			}
 		})
 	})
 
@@ -48,6 +61,7 @@ describe('withIterator', () => {
 				const iter = withIterator(item)
 				expect(Array.from(iter)[0]).toBe(item)
 			})
+
 			test('should delegate to existing iterators', () => {
 				const item = Object.assign(
 					{ value: true },
@@ -60,6 +74,7 @@ describe('withIterator', () => {
 				const iter = withIterator(item)
 				expect(Array.from(item)[0]).toEqual({ value: false })
 			})
+
 			test('should respect the prototype chain', () => {
 				const proto = {
 					[Symbol.iterator]: function*() {
@@ -93,6 +108,7 @@ describe('withIterator', () => {
 						)
 					))
 			})
+
 			describe('if an iterator exists on the prototype', () => {
 				describe('should return the primitive value', () =>
 					test('String', () =>
@@ -100,6 +116,7 @@ describe('withIterator', () => {
 							false
 						)))
 			})
+
 			describe('has an iterator returning scalar values', () =>
 				[1, true, 'str', Symbol()].forEach(value =>
 					test(Object(value).constructor.name, () => {

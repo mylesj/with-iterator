@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-    - "10"
+  - "10"
 
 cache: npm
 
@@ -10,5 +10,5 @@ before_install:
 
 script:
   - npm run build
-  - npm run test -- --verbose --collectCoverage --coverageDirectory ./test/coverage/
+  - npm run test -- --verbose --collectCoverage
   - cat ./test/coverage/lcov.info | coveralls

@@ -1,10 +1,12 @@
-const { valueOf, withIterator } = require('..')
+import { valueOf } from '../src/util'
+import { withIterator } from '../src/withIterator'
 
 describe('valueOf', () => {
 	test('should pass-through object refereces', () => {
 		const ref = {}
 		expect(valueOf(ref)).toBe(ref)
 	})
+
 	describe('should return primitive types as-is', () => {
 		const toTest = [
 			['null', null],
@@ -18,6 +20,7 @@ describe('valueOf', () => {
 			test(name, () => expect(valueOf(input)).toBe(input))
 		)
 	})
+
 	describe('should return boxed primitives as primitives', () => {
 		const toTest = [
 			['null', null],
