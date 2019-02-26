@@ -1,4 +1,4 @@
-import { isIterable, boxed } from './util'
+import { isIterable, boxed } from './utils'
 import { isUndefined, isFunction, Empty } from './types'
 
 const assignIterator = (iterator, thing, descriptor) => {

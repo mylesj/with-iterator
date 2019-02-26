@@ -1,8 +1,8 @@
-import { valueOf } from '../src/util'
+import { valueOf } from '../src/utils'
 import { withIterator } from '../src/with-iterator'
 
 describe('valueOf', () => {
-	test('should pass-through object refereces', () => {
+	test('should pass-through object references', () => {
 		const ref = {}
 		expect(valueOf(ref)).toBe(ref)
 	})

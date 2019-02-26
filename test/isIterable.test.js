@@ -1,4 +1,4 @@
-import { isIterable } from '../src/util'
+import { isIterable } from '../src/utils'
 
 describe('isIterable', () => {
 	describe('when there is no input', () => {
