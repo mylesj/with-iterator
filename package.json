@@ -4,14 +4,13 @@
 	},
 	"name": "with-iterator",
 	"version": "1.2.4",
-	"description": "wrap arbitrary input with ECMA2015 iterators",
+	"description": "wrap arbitrary input with iterators",
 	"keywords": [
 		"withIterator",
 		"iterator",
 		"generator",
 		"functional",
-		"agnostic",
-		"wrapper"
+		"agnostic"
 	],
 	"repository": "github:mylesj/with-iterator",
 	"bugs": "https://github.com/mylesj/with-iterator/issues",
