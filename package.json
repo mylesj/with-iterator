@@ -20,7 +20,7 @@
 	"files": [
 		"dist/"
 	],
-	"license": "MIT",
+	"license": "ISC",
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "rollup -c",
