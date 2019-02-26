@@ -1,4 +1,4 @@
-import { withIterator } from '../src/withIterator'
+import { withIterator } from '../src/with-iterator'
 
 describe('withIterator', () => {
 	test('should maintain object references', () => {
