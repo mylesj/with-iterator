@@ -1,4 +1,4 @@
-import { getIterator } from '../src/util'
+import { getIterator } from '../src/utils'
 import { withIterator } from '../src/with-iterator'
 
 describe('getIterator', () => {

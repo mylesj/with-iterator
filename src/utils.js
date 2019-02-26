@@ -25,7 +25,7 @@ export const boxed = thing =>
 	isUndefined(thing)
 		? new Undefined()
 		: isNull(thing)
-			? new Null()
-			: Object(thing)
+		? new Null()
+		: Object(thing)
 
 export const valueOf = thing => boxed(thing).valueOf()
