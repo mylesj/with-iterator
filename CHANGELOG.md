@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
--   swap MIT licence for [ISC](https://en.wikipedia.org/wiki/ISC_license) (more permissive) ([4fbafb4](https://github.com/mylesj/with-iterator/commit/4fbafb4))
+-   swap MIT licence for [ISC](https://en.wikipedia.org/wiki/ISC_license) (more permissive)
 
 <a name="1.2.4"></a>
 
@@ -17,10 +17,6 @@ All notable changes to this project will be documented in this file. See [standa
 <a name="1.2.3"></a>
 
 ## [1.2.3](https://github.com/mylesj/with-iterator/compare/v1.2.2...v1.2.3) (2018-05-02)
-
-### Bug Fixes
-
--   line-endings ([cfd65f9](https://github.com/mylesj/with-iterator/commit/cfd65f9))
 
 <a name="1.2.2"></a>
 
