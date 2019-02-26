@@ -1,5 +1,5 @@
 import { getIterator } from '../src/util'
-import { withIterator } from '../src/withIterator'
+import { withIterator } from '../src/with-iterator'
 
 describe('getIterator', () => {
 	describe('when passed an object with an iterator', () => {

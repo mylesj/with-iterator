@@ -1,5 +1,5 @@
 import { valueOf } from '../src/util'
-import { withIterator } from '../src/withIterator'
+import { withIterator } from '../src/with-iterator'
 
 describe('valueOf', () => {
 	test('should pass-through object refereces', () => {
