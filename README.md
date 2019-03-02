@@ -15,16 +15,15 @@ Key points:
 
 ## exposes
 
--   **withIterator**
+-   **withIterator**  
     => ( factory: _function_, input: _any_ [, descriptor: _object_ ] ): _object_
--   **withIterator**
-    => ( factory: _function_ ): _function_
-    => ( input: _any_ [, descriptor: _object_ ] ): _object_
--   **isIterable**
+-   **withIterator**  
+    => ( factory: _function_ ): _function_ => ( input: _any_ [, descriptor: _object_ ] ): _object_
+-   **isIterable**  
     => ( input: _any_ ): _boolean_
--   **getIterator**
+-   **getIterator**  
     => ( input: _any_ ): _function_
--   **valueOf**
+-   **valueOf**  
     => ( input: _any_ ): input
 
 The `descriptor` parameter is optional and corresponds to that of
