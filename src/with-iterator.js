@@ -1,5 +1,5 @@
-import { isIterable, boxed } from './utils'
-import { isUndefined, isFunction, Empty } from './types'
+import { isIterable, boxed } from './utils.js'
+import { isUndefined, isFunction, Empty } from './types.js'
 
 const assignIterator = (iterator, thing, descriptor) => {
 	const isIterator = isFunction(iterator)

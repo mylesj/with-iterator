@@ -5,7 +5,7 @@ import {
 	isFunction,
 	Undefined,
 	Null
-} from './types'
+} from './types.js'
 
 export const isIterable = thing => isFunction(Object(thing)[Symbol.iterator])
 
