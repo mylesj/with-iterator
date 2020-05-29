@@ -46,12 +46,12 @@ import { withIterator } from 'https://unpkg.com/with-iterator/deno.js'
 ### TypeScript
 
 Depending on existing environment or project setup the following minimal
-config may also be required.
+config may also be required. `strictNullChecks` is optional but will
+improve type resolution if enabled.
 
 ```json
 {
 	"compilerOptions": {
-		// optional - will improve type resolution if enabled
 		"strictNullChecks": true,
 		"lib": ["es5", "es2015.iterable", "es2015.generator"]
 	}
