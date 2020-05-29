@@ -10,7 +10,8 @@
 		"iterator",
 		"generator",
 		"functional",
-		"agnostic"
+		"agnostic",
+		"deno"
 	],
 	"repository": "github:mylesj/with-iterator",
 	"bugs": "https://github.com/mylesj/with-iterator/issues",
@@ -19,14 +20,16 @@
 	"types": "types.d.ts",
 	"files": [
 		"dist/",
-		"types.d.ts"
+		"types.d.ts",
+		"deno.js"
 	],
 	"license": "ISC",
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "rollup -c",
 		"test": "jest -c jest.config.json",
-		"prerelease": "npm run build && npm run test",
+		"test-deno": "deno test ./test/_deno-{dist,src}.js",
+		"prerelease": "npm run build && npm run test && npm run test-deno",
 		"release": "standard-version --commit-all"
 	},
 	"husky": {

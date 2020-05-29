@@ -1,2 +1,2 @@
-export { withIterator } from './with-iterator'
-export { isIterable, getIterator, valueOf } from './utils'
+export { withIterator } from './with-iterator.js'
+export { isIterable, getIterator, valueOf } from './utils.js'
