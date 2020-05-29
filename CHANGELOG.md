@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/mylesj/with-iterator/compare/v2.0.0...v2.0.1) (2020-05-29)
+
+### Bug Fixes
+
+-   document typescript peer-dependencies ([9103ca5](https://github.com/mylesj/with-iterator/commit/9103ca5a43c083b667173b90026c846f6a3d068a))
+
 ## [2.0.0](https://github.com/mylesj/with-iterator/compare/v1.2.5...v2.0.0) (2020-05-29)
 
 ### Features
