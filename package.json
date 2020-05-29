@@ -16,8 +16,10 @@
 	"bugs": "https://github.com/mylesj/with-iterator/issues",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm.js",
+	"types": "types.d.ts",
 	"files": [
-		"dist/"
+		"dist/",
+		"types.d.ts"
 	],
 	"license": "ISC",
 	"scripts": {
@@ -33,7 +35,7 @@
 		}
 	},
 	"lint-staged": {
-		"**/*.{js,json,md}": [
+		"**/*.{ts,js,json,md}": [
 			"prettier --write",
 			"git add"
 		]
