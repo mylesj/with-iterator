@@ -110,15 +110,16 @@ describe('withIterator', () => {
 			})
 
 			describe('if an iterator exists on the prototype', () => {
-				describe('should return the primitive value', () =>
+				describe('should return the primitive value', () => {
 					test('String', () =>
 						expect(withIterator('str') instanceof String).toBe(
 							false
-						)))
+						))
+				})
 			})
 
-			describe('has an iterator returning scalar values', () =>
-				[1, true, 'str', Symbol()].forEach(value =>
+			describe('has an iterator returning scalar values', () => {
+				;[1, true, 'str', Symbol()].forEach(value =>
 					test(Object(value).constructor.name, () => {
 						const item = withIterator(value)
 						expect(Array.from(item)).toEqual(
@@ -127,7 +128,8 @@ describe('withIterator', () => {
 								: expect.arrayContaining([value])
 						)
 					})
-				))
+				)
+			})
 		})
 	})
 
