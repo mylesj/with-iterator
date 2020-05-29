@@ -182,7 +182,7 @@ console.log(
 
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
 [repo:package]: https://www.npmjs.com/package/with-iterator
-[repo:examples]: https://runkit.com/mylesj/with-iterator/1.2.0
+[repo:examples]: https://runkit.com/mylesj/with-iterator/2.0.0
 [repo:types]: https://github.com/mylesj/with-iterator/blob/master/types.d.ts
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 [ext:coveralls]: https://coveralls.io/github/mylesj/with-iterator?branch=master
