@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.0](https://github.com/mylesj/with-iterator/compare/v1.2.5...v2.0.0) (2020-05-29)
+
+### Features
+
+-   add type definitions ([9ad35a6](https://github.com/mylesj/with-iterator/commit/9ad35a6e0783f249d15a144a4b639e9502ff67f3))
+-   support deno import ([c80d398](https://github.com/mylesj/with-iterator/commit/c80d3982663b4fe725f19012e28ad1c896193a0f))
 
 <a name="1.2.5"></a>
 
