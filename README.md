@@ -95,7 +95,7 @@ set with sensible defaults:
 }
 ```
 
-### isIterable
+### isIterable
 
 ```typescript
 function isIterable(input: any): boolean
