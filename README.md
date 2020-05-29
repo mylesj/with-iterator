@@ -1,33 +1,75 @@
 [![npm version][img:npm-version]][repo:package]
 [![build status][img:repo-status]][repo:status]
 [![coverage status][img:coveralls]][ext:coveralls]
-[![conventional commits][img:commits]][ext:commits]
 
 # with-iterator
 
-A simple ECMA2015 helper function for attaching iterator factories or
-generators to arbitrary input, be it an object or primitive type.
-Key points:
+A utility for attaching iterator factories / generators to arbitrary input.
 
--   Is mutative - if passed a composite type, returns the same reference.
--   Is type aware - if passed a primitive, returns the same object type.
--   Is curried - if passed only a function, composes a new wrapper.
+-   Is mutative - when passed a composite type, returns the same reference.
+-   Is type aware - when passed a primitive, returns the same object type.
+-   Is curried - when passed a single function, composes a new wrapper.
+
+**TL;DR** [examples](#examples)
+
+## motivation
+
+The project originally served as a simple aid in understanding the mechanics of
+publishing to NPM while also an excuse to play around with generator functions,
+which I generally don't find many use-cases for in day-to-day app. development.
+For the same reason this package has limited application but I still like
+tinkering with generators on the REPL for which it has some utility.
+
+More recently I've been learning some of the more advanced TypeScript concepts
+and tried to apply them retrospectively here. They're passable but could probably
+be better - I'm not sure how to reconcile mutative behaviour for example.
+
+## install
+
+### Node
+
+```none
+> npm install with-iterator
+```
+
+```js
+const { withIterator } = require('with-iterator')
+```
+
+### Deno
+
+```typescript
+// "https://unpkg.com/with-iterator@VERSION/deno.js" VERSION >= 2.0.0
+import { withIterator } from 'https://unpkg.com/with-iterator/deno.js'
+```
 
 ## exposes
 
--   **withIterator**  
-    => ( factory: _function_, input: _any_ [, descriptor: _object_ ] ): _object_
--   **withIterator**  
-    => ( factory: _function_ ): _function_ => ( input: _any_ [, descriptor: _object_ ] ): _object_
--   **isIterable**  
-    => ( input: _any_ ): _boolean_
--   **getIterator**  
-    => ( input: _any_ ): _function_
--   **valueOf**  
-    => ( input: _any_ ): input
+> **_Note:_** _The documented types here are simplified for readability.
+> Inner types should be preserved - see [source][repo:types] for detail._
 
-The `descriptor` parameter is optional and corresponds to that of
-[`Object.defineProperty`][ext:defineproperty] - unless overridden, is
+### withIterator
+
+```typescript
+function withIterator(
+	factory: () => Generator,
+	input: any,
+	descriptor?: PropertyDescriptor
+): Iterable
+```
+
+```typescript
+function withIterator(
+	factory: () => Generator
+): (input: any, descriptor?: PropertyDescriptor) => Iterable
+```
+
+```typescript
+function withIterator(input: any): Iterable
+```
+
+The optional `descriptor` parameter corresponds to that of
+[`Object.defineProperty`][ext:defineproperty] and if not overridden, is
 set with sensible defaults:
 
 ```js
@@ -36,6 +78,24 @@ set with sensible defaults:
     configurable: true,
     enumerable: false
 }
+```
+
+### isIterable
+
+```typescript
+function isIterable(input: any): boolean
+```
+
+### getIterator
+
+```typescript
+function getIterator(input: any): unknown | () => Generator
+```
+
+### valueOf
+
+```typescript
+function valueOf(input: any): any
 ```
 
 ## examples
@@ -53,7 +113,7 @@ const {
 } = require('with-iterator')
 ```
 
-By default if not passed a factory (function), any input is assigned
+By default if not passed a factory function, any input is assigned
 an iterator that yields itself, if it isn't already iterable - else
 it is unchanged.
 
@@ -77,7 +137,8 @@ const foo = withIterator(sum, [1, 2, 3, 4, 5])
 Array.from(foo) // [ 1, 3, 6, 10, 15 ]
 ```
 
-Can compose new helpers and works with primitives.
+When only passed a factory, will compose a new helper. This
+examples also demonstrates the use of primitive input.
 
 ```js
 const hex = ['123456', 'cc9933', 'fedcba']
@@ -94,7 +155,7 @@ hex.map(rgb).forEach(code => {
 // hex: fedcba - rgb: (254,220,186)
 ```
 
-Can work with prototypes.
+Setting an iterator on a class prototype.
 
 ```js
 class Digits extends Number {}
@@ -106,7 +167,7 @@ const digits = new Digits(54321)
 Array.from(digits) // [5, 4, 3, 2, 1]
 ```
 
-Resolve boxed primitives.
+Resolving boxed primitives.
 
 ```js
 const nul = withIterator(null)
@@ -122,10 +183,9 @@ console.log(
 [repo:status]: https://travis-ci.org/mylesj/with-iterator
 [repo:package]: https://www.npmjs.com/package/with-iterator
 [repo:examples]: https://runkit.com/mylesj/with-iterator/1.2.0
+[repo:types]: https://github.com/mylesj/with-iterator/blob/master/types.d.ts
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
-[ext:commits]: https://conventionalcommits.org
 [ext:coveralls]: https://coveralls.io/github/mylesj/with-iterator?branch=master
 [img:repo-status]: https://travis-ci.org/mylesj/with-iterator.svg?branch=master
 [img:npm-version]: https://badgen.net/npm/v/with-iterator
-[img:commits]: https://badgen.net/badge/conventional%20commits/1.0.0/yellow
 [img:coveralls]: https://coveralls.io/repos/github/mylesj/with-iterator/badge.svg?branch=master
