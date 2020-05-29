@@ -3,7 +3,7 @@
 		"node": ">=8.3.0"
 	},
 	"name": "with-iterator",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "wrap arbitrary input with iterators",
 	"keywords": [
 		"withIterator",
