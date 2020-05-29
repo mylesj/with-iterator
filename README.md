@@ -43,6 +43,21 @@ const { withIterator } = require('with-iterator')
 import { withIterator } from 'https://unpkg.com/with-iterator/deno.js'
 ```
 
+### TypeScript
+
+Depending on existing environment or project setup the following minimal
+config may also be required.
+
+```json
+{
+	"compilerOptions": {
+		// optional - will improve type resolution if enabled
+		"strictNullChecks": true,
+		"lib": ["es5", "es2015.iterable", "es2015.generator"]
+	}
+}
+```
+
 ## exposes
 
 > **_Note:_** _The documented types here are simplified for readability.
