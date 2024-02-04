@@ -1,55 +1,43 @@
 {
-	"engines": {
-		"node": ">=8.3.0"
-	},
-	"name": "with-iterator",
-	"version": "2.0.2",
-	"description": "wrap arbitrary input with iterators",
-	"keywords": [
-		"withIterator",
-		"iterator",
-		"generator",
-		"functional",
-		"agnostic",
-		"deno"
-	],
-	"repository": "github:mylesj/with-iterator",
-	"bugs": "https://github.com/mylesj/with-iterator/issues",
-	"main": "dist/index.cjs.js",
-	"module": "dist/index.esm.js",
-	"types": "types.d.ts",
-	"files": [
-		"dist/",
-		"types.d.ts",
-		"deno.js"
-	],
-	"license": "ISC",
-	"scripts": {
-		"prebuild": "rimraf dist",
-		"build": "rollup -c",
-		"test": "jest -c jest.config.json",
-		"test-deno": "deno test ./test/_deno-{dist,src}.js",
-		"prerelease": "npm run build && npm run test && npm run test-deno",
-		"release": "standard-version --commit-all"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "node_modules/.bin/lint-staged"
-		}
-	},
-	"lint-staged": {
-		"**/*.{ts,js,json,md}": [
-			"prettier --write"
-		]
-	},
-	"devDependencies": {
-		"husky": "^4.2.5",
-		"jest": "^26.0.1",
-		"lint-staged": "^10.2.6",
-		"prettier": "*",
-		"rimraf": "^3.0.2",
-		"rollup": "^2.11.0",
-		"rollup-jest": "^0.0.2",
-		"standard-version": "^8.0.0"
-	}
+    "type": "module",
+    "name": "with-iterator",
+    "version": "2.0.2",
+    "description": "wrap arbitrary input with iterators",
+    "author": "mylesj <hi@mylesj.dev>",
+    "license": "ISC",
+    "keywords": [
+        "withIterator",
+        "iterator",
+        "generator",
+        "functional",
+        "agnostic"
+    ],
+    "repository": "github:mylesj/with-iterator",
+    "bugs": "https://github.com/mylesj/with-iterator/issues",
+    "files": [
+        "src/",
+        "types.d.ts"
+    ],
+    "exports": "./src/index.mjs",
+    "types": "types.d.ts",
+    "scripts": {
+        "prepare": "husky",
+        "test": "rimraf test/coverage && c8 mocha",
+        "prerelease": "$npm_execpath run test",
+        "release": "standard-version --commit-all"
+    },
+    "devDependencies": {
+        "@mylesj/prettier-config": "^1.0.1",
+        "c8": "^9.1.0",
+        "chai": "^5.0.3",
+        "husky": "^9.0.10",
+        "lint-staged": "^15.2.1",
+        "mocha": "^10.2.0",
+        "prettier": "^3.2.5",
+        "rimraf": "^5.0.5",
+        "standard-version": "^9.5.0"
+    },
+    "engines": {
+        "node": ">=16"
+    }
 }
