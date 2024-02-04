@@ -1,37 +1,40 @@
-import { valueOf } from '../src/utils'
-import { withIterator } from '../src/with-iterator'
+import { expect } from 'chai'
+
+import { valueOf, withIterator } from '../src/index.mjs'
 
 describe('valueOf', () => {
-	test('should pass-through object references', () => {
-		const ref = {}
-		expect(valueOf(ref)).toBe(ref)
-	})
+    it('should pass-through object references', () => {
+        const ref = {}
+        expect(valueOf(ref)).to.equal(ref)
+    })
 
-	describe('should return primitive types as-is', () => {
-		const toTest = [
-			['null', null],
-			['undefined', undefined],
-			['string', 'str'],
-			['number', 42],
-			['boolean', true],
-			['symbol', Symbol('sym')]
-		]
-		toTest.forEach(([name, input]) =>
-			test(name, () => expect(valueOf(input)).toBe(input))
-		)
-	})
+    describe('should return primitive types as-is', () => {
+        const toTest = [
+            ['null', null],
+            ['undefined', undefined],
+            ['string', 'str'],
+            ['number', 42],
+            ['boolean', true],
+            ['symbol', Symbol('sym')],
+        ]
+        toTest.forEach(([name, input]) =>
+            it(name, () => expect(valueOf(input)).to.equal(input)),
+        )
+    })
 
-	describe('should return boxed primitives as primitives', () => {
-		const toTest = [
-			['null', null],
-			['undefined', undefined],
-			['string', 'str'],
-			['number', 42],
-			['boolean', true],
-			['symbol', Symbol('sym')]
-		]
-		toTest.forEach(([name, input]) =>
-			test(name, () => expect(valueOf(withIterator(input))).toBe(input))
-		)
-	})
+    describe('should return boxed primitives as primitives', () => {
+        const toTest = [
+            ['null', null],
+            ['undefined', undefined],
+            ['string', 'str'],
+            ['number', 42],
+            ['boolean', true],
+            ['symbol', Symbol('sym')],
+        ]
+        toTest.forEach(([name, input]) =>
+            it(name, () =>
+                expect(valueOf(withIterator(input))).to.equal(input),
+            ),
+        )
+    })
 })

@@ -1,33 +1,35 @@
-import { isIterable } from '../src/utils'
+import { expect } from 'chai'
+
+import { isIterable } from '../src/index.mjs'
 
 describe('isIterable', () => {
-	describe('when there is no input', () => {
-		test('should be false when undefined', () => {
-			expect(isIterable(undefined)).toBe(false)
-		})
+    describe('when there is no input', () => {
+        it('should be false when undefined', () => {
+            expect(isIterable(undefined)).to.equal(false)
+        })
 
-		test('should be false when null', () => {
-			expect(isIterable(null)).toBe(false)
-		})
-	})
+        it('should be false when null', () => {
+            expect(isIterable(null)).to.equal(false)
+        })
+    })
 
-	describe('when input is a composite type', () => {
-		test('should be false for non-iterable objects', () => {
-			expect(isIterable(Object())).toBe(false)
-		})
+    describe('when input is a composite type', () => {
+        it('should be false for non-iterable objects', () => {
+            expect(isIterable(Object())).to.equal(false)
+        })
 
-		test('should be true for iterable objects', () => {
-			expect(isIterable(Array())).toBe(true)
-		})
-	})
+        it('should be true for iterable objects', () => {
+            expect(isIterable(Array())).to.equal(true)
+        })
+    })
 
-	describe('when the input is a primitive type', () => {
-		test('should be false for non-iterable values', () => {
-			expect(isIterable(1)).toBe(false)
-		})
+    describe('when the input is a primitive type', () => {
+        it('should be false for non-iterable values', () => {
+            expect(isIterable(1)).to.equal(false)
+        })
 
-		test('should be true if the prototype has an iterator', () => {
-			expect(isIterable('string-literal')).toBe(true)
-		})
-	})
+        it('should be true if the prototype has an iterator', () => {
+            expect(isIterable('string-literal')).to.equal(true)
+        })
+    })
 })
