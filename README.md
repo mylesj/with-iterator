@@ -1,5 +1,5 @@
+[![github][img:github]][repo:github]
 [![npm version][img:npm-version]][repo:package]
-[![build status][img:repo-status]][repo:status]
 [![coverage status][img:coveralls]][ext:coveralls]
 
 # with-iterator
@@ -14,15 +14,10 @@ A utility for attaching iterator factories / generators to arbitrary input.
 
 ## motivation
 
-The project originally served as a simple aid in understanding the mechanics of
+This project originally served as a simple aid in understanding the mechanics of
 publishing to NPM while also an excuse to play around with generator functions,
-which I generally don't find many use-cases for in day-to-day app. development.
-For the same reason this package has limited application but I still like
-tinkering with generators on the REPL for which it has some utility.
-
-More recently I've been learning some of the more advanced TypeScript concepts
-and tried to apply them retrospectively here. They're passable but could probably
-be better - I'm not sure how to reconcile mutative behaviour for example.
+which I generally don't find many use-cases for in day-to-day app development -
+for the same reason this package has limited application.
 
 ## install
 
@@ -32,15 +27,14 @@ be better - I'm not sure how to reconcile mutative behaviour for example.
 > npm install with-iterator
 ```
 
-```js
-const { withIterator } = require('with-iterator')
+```javascript
+import { withIterator } from 'with-iterator'
 ```
 
 ### Deno
 
-```typescript
-// "https://unpkg.com/with-iterator@VERSION/deno.js" VERSION >= 2.0.0
-import { withIterator } from 'https://unpkg.com/with-iterator/deno.js'
+```javascript
+import { withIterator } from 'npm:with-iterator'
 ```
 
 ### TypeScript
@@ -51,10 +45,10 @@ improve type resolution if enabled.
 
 ```json
 {
-	"compilerOptions": {
-		"strictNullChecks": true,
-		"lib": ["es5", "es2015.iterable", "es2015.generator"]
-	}
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "lib": ["es5", "es2015.iterable", "es2015.generator"]
+    }
 }
 ```
 
@@ -67,15 +61,15 @@ improve type resolution if enabled.
 
 ```typescript
 function withIterator(
-	factory: () => Generator,
-	input: any,
-	descriptor?: PropertyDescriptor
+    factory: () => Generator,
+    input: any,
+    descriptor?: PropertyDescriptor,
 ): Iterable
 ```
 
 ```typescript
 function withIterator(
-	factory: () => Generator
+    factory: () => Generator,
 ): (input: any, descriptor?: PropertyDescriptor) => Iterable
 ```
 
@@ -115,17 +109,12 @@ function valueOf(input: any): any
 
 ## examples
 
-» [RunKit][repo:examples]
+» [StackBlitz examples][repo:examples]
 
 ### usage
 
 ```js
-const {
-	withIterator,
-	isIterable,
-	getIterator,
-	valueOf
-} = require('with-iterator')
+import { withIterator, isIterable, getIterator, valueOf } from 'with-iterator'
 ```
 
 By default if not passed a factory function, any input is assigned
@@ -137,16 +126,16 @@ Array.from(withIterator([1, 2, 3])) // [ 1, 2, 3 ]
 Array.from(withIterator({ value: true })) // [ { value: true } ]
 ```
 
-When explicitly passed a factory, any existing one is superseded.
+When explicitly passed a factory, any existing iterator is superseded.
 
 ```js
 const sum = function* allThatCameBefore() {
-	let i = 0
-	let n = 0
-	while (i < this.length) {
-		yield (n += this[i])
-		i++
-	}
+    let i = 0
+    let n = 0
+    while (i < this.length) {
+        yield (n += this[i])
+        i++
+    }
 }
 const foo = withIterator(sum, [1, 2, 3, 4, 5])
 Array.from(foo) // [ 1, 3, 6, 10, 15 ]
@@ -157,25 +146,25 @@ examples also demonstrates the use of primitive input.
 
 ```js
 const hex = ['123456', 'cc9933', 'fedcba']
-const rgb = withIterator(function*() {
-	const re = /../g
-	let next
-	while ((next = re.exec(this))) yield Number.parseInt(next, 16)
+const rgb = withIterator(function* () {
+    const re = /../g
+    let next
+    while ((next = re.exec(this))) yield Number.parseInt(next, 16)
 })
-hex.map(rgb).forEach(code => {
-	console.log(`hex: ${code} - rgb: (${[...code]})`)
+hex.map(rgb).forEach((code) => {
+    console.log(`hex: ${code} - rgb: (${[...code]})`)
 })
 // hex: 123456 - rgb: (18,52,86)
 // hex: cc9933 - rgb: (204,153,51)
 // hex: fedcba - rgb: (254,220,186)
 ```
 
-Setting an iterator on a class prototype.
+Assigning an iterator to a class prototype.
 
 ```js
 class Digits extends Number {}
-withIterator(function*() {
-	for (let d of getIterator(String).call(this)) yield Number(d)
+withIterator(function* () {
+    for (let d of getIterator(String).call(this)) yield Number(d)
 }, Digits.prototype)
 
 const digits = new Digits(54321)
@@ -189,18 +178,18 @@ const nul = withIterator(null)
 const und = withIterator(undefined)
 const num = withIterator(42)
 console.log(
-	valueOf(nul), // null
-	valueOf(und), // undefined
-	valueOf(num) // 42
+    valueOf(nul), // null
+    valueOf(und), // undefined
+    valueOf(num), // 42
 )
 ```
 
-[repo:status]: https://travis-ci.org/mylesj/with-iterator
+[repo:github]: https://github.com/mylesj/with-iterator
 [repo:package]: https://www.npmjs.com/package/with-iterator
-[repo:examples]: https://runkit.com/mylesj/with-iterator/2.0.0
+[repo:examples]: https://stackblitz.com/~/edit/with-iterator?file=index.mjs&view=editor
 [repo:types]: https://github.com/mylesj/with-iterator/blob/master/types.d.ts
 [ext:defineproperty]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 [ext:coveralls]: https://coveralls.io/github/mylesj/with-iterator?branch=master
-[img:repo-status]: https://travis-ci.org/mylesj/with-iterator.svg?branch=master
-[img:npm-version]: https://badgen.net/npm/v/with-iterator
-[img:coveralls]: https://coveralls.io/repos/github/mylesj/with-iterator/badge.svg?branch=master
+[img:github]: https://img.shields.io/badge/%20-Source-555555?logo=github&style=for-the-badge
+[img:npm-version]: https://img.shields.io/npm/v/with-iterator?&label=%20&logo=npm&style=for-the-badge
+[img:coveralls]: https://img.shields.io/coverallsCoverage/github/mylesj/with-iterator?branch=master&style=for-the-badge&logo=coveralls
